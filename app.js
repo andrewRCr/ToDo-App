@@ -4,12 +4,12 @@
 
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 // define default route
 app.get('/', (req, res) => res.send('Hello, World!'))
 
-app.listen(port, () => console.log(`App listening at http://localhost:${port}; ctrl + C to stop`));
+app.listen(port, () => console.log(`App listening at http://localhost:${port}; ctrl + C to stop.`));
 
 
 // array to hold task items
