@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Andrew Creekmore's CS 361 Project </title>
     <link rel="stylesheet" href="styles.css" type="text/css">
     
@@ -15,11 +14,32 @@
       <ul class="task-list js-task-list"></ul>
   
       <form class="js-form">
-        <input autofocus type="text" aria-label="Enter a new task" placeholder="e.g. Do the laundry" class="js-task-input">
+        <input autofocus type="text" aria-label="Enter a new task" placeholder="Remember to..." class="js-task-input">
       </form>
     </div>
 
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="index.js">
+
+
+    // select form element
+    const form = document.querySelector('.js-form');
+    // add submit event listener
+    form.addEventListener('submit', event =>{
+      // no page auto-refresh on submit
+      event.preventDefault();
+      // select text input
+      const input = document.querySelector('.js-task-input');
+
+      // get input value
+      const text = input.value.trim();
+      if (text !== '') {
+          addTask(text);
+          input.value = '';
+          input.focus();
+      }
+    });
+
+    </script>
 </body>
 
 
