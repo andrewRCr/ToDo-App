@@ -9,7 +9,7 @@ exports.create = (req, res) => {
       });
     }
   
-    // Create a Entry
+    // Create an Entry
     const entry = new Entry({
       app: req.body.app,
       username: req.body.username,
@@ -45,7 +45,7 @@ exports.findOne = (req, res) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Entry with id ${req.params.entryId}.`
+            message: `Not found: Entry with id ${req.params.entryId}.`
           });
         } else {
           res.status(500).send({
@@ -56,12 +56,12 @@ exports.findOne = (req, res) => {
     });
   };
 
-// Update a Entry identified by the entryId in the request
+// Update an Entry identified by the entryId in the request
 exports.update = (req, res) => {
     // Validate Request
     if (!req.body) {
       res.status(400).send({
-        message: "Content can not be empty!"
+        message: "Content cannot be empty!"
       });
     }
   
@@ -72,7 +72,7 @@ exports.update = (req, res) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
-              message: `Not found Entry with id ${req.params.entryId}.`
+              message: `Not found: Entry with id ${req.params.entryId}.`
             });
           } else {
             res.status(500).send({
@@ -84,20 +84,20 @@ exports.update = (req, res) => {
     );
   };
 
-// Delete a Entry with the specified entryId in the request
+// Delete an Entry with the specified entryId in the request
 exports.delete = (req, res) => {
     Entry.remove(req.params.entryId, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Entry with id ${req.params.entryId}.`
+            message: `Not found: Entry with id ${req.params.entryId}.`
           });
         } else {
           res.status(500).send({
             message: "Could not delete Entry with id " + req.params.entryId
           });
         }
-      } else res.send({ message: "Entry  with id " + req.params.entryId + " was deleted successfully!" });
+      } else res.send({ message: "Entry with id " + req.params.entryId + " was deleted successfully!" });
     });
   };
 
