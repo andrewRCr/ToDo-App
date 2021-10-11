@@ -8,7 +8,7 @@ const Entry = function(entry) {
 };
 
 Entry.create = (newEntry, result) => {
-  sql.query("INSERT INTO entrys SET ?", newEntry, (err, res) => {
+  sql.query("INSERT INTO entry SET ?", newEntry, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -21,7 +21,7 @@ Entry.create = (newEntry, result) => {
 };
 
 Entry.findById = (entryId, result) => {
-  sql.query(`SELECT * FROM entrys WHERE id = ${entryId}`, (err, res) => {
+  sql.query(`SELECT * FROM entry WHERE id = ${entryId}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -40,21 +40,21 @@ Entry.findById = (entryId, result) => {
 };
 
 Entry.getAll = result => {
-  sql.query("SELECT * FROM entrys", (err, res) => {
+  sql.query("SELECT * FROM entry", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
 
-    console.log("entrys: ", res);
+    console.log("entry: ", res);
     result(null, res);
   });
 };
 
 Entry.updateById = (id, entry, result) => {
   sql.query(
-    "UPDATE entrys SET app = ?, entryname = ?, password = ? WHERE id = ?",
+    "UPDATE entry SET app = ?, entryname = ?, password = ? WHERE id = ?",
     [entry.app, entry.entryname, entry.password, id],
     (err, res) => {
       if (err) {
@@ -76,7 +76,7 @@ Entry.updateById = (id, entry, result) => {
 };
 
 Entry.remove = (id, result) => {
-  sql.query("DELETE FROM entrys WHERE id = ?", id, (err, res) => {
+  sql.query("DELETE FROM entry WHERE id = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -95,14 +95,14 @@ Entry.remove = (id, result) => {
 };
 
 Entry.removeAll = result => {
-  sql.query("DELETE FROM entrys", (err, res) => {
+  sql.query("DELETE FROM entry", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
 
-    console.log(`deleted ${res.affectedRows} entrys`);
+    console.log(`deleted ${res.affectedRows} entry`);
     result(null, res);
   });
 };
