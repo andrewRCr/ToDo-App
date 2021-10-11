@@ -4,17 +4,17 @@ module.exports = app => {
   // Create a new Entry
   app.post("/entries", entries.create);
 
-  // Retrieve all Entrys
+  // Retrieve all Entries
   app.get("/entries", entries.findAll);
 
-  // Retrieve a single Entry with customerId
-  app.get("/entries/:customerId", entries.findOne);
+  // Retrieve a single Entry with entryId
+  app.get("/entries/:entryId", entries.findOne);
 
-  // Update a Entry with customerId
-  app.put("/entries/:customerId", entries.update);
+  // Update an Entry with entryId
+  app.put("/entries/:entryId", entries.update);
 
-  // Delete a Entry with customerId
-  app.delete("/entries/:customerId", entries.delete);
+  // Delete an Entry with entryId
+  app.delete("/entries/:entryId", entries.delete);
 
   // Create a new Entry
   app.delete("/entries", entries.deleteAll);

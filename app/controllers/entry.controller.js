@@ -27,19 +27,19 @@ exports.create = (req, res) => {
     });
   };
 
-// Retrieve all Entrys from the database.
+// Retrieve all Entries from the database
 exports.findAll = (req, res) => {
     Entry.getAll((err, data) => {
       if (err)
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving entrys."
+            err.message || "Some error occurred while retrieving entries."
         });
       else res.send(data);
     });
   };
 
-// Find a single Entry with a entryId
+// Find a single Entry with an entryId
 exports.findOne = (req, res) => {
     Entry.findById(req.params.entryId, (err, data) => {
       if (err) {
@@ -97,18 +97,18 @@ exports.delete = (req, res) => {
             message: "Could not delete Entry with id " + req.params.entryId
           });
         }
-      } else res.send({ message: `Entry was deleted successfully!` });
+      } else res.send({ message: "Entry  with id " + req.params.entryId + " was deleted successfully!" });
     });
   };
 
-// Delete all Entrys from the database.
+// Delete all Entries from the database.
 exports.deleteAll = (req, res) => {
     Entry.removeAll((err, data) => {
       if (err)
         res.status(500).send({
           message:
-            err.message || "Some error occurred while removing all entrys."
+            err.message || "Some error occurred while removing all entries."
         });
-      else res.send({ message: `All Entrys were deleted successfully!` });
+      else res.send({ message: `All Entries were deleted successfully!` });
     });
   };
