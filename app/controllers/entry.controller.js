@@ -1,119 +1,114 @@
-const Entry = require("../models/entry.model.js");
+const Customer = require("../models/entry.model.js");
 
-// Create and Save a new Entry
+// Create and Save a new Customer
 exports.create = (req, res) => {
-
-  // Validate request
-  if (!req.body) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
-  }
-
-  // Create an Entry
-  const entry = new Entry({
-    app: req.body.app,
-    username: req.body.username,
-    password: req.body.password
-  });
-
-  // Save Entry in the database
-  Entry.create(entry, (err, data) => {
-    if (err)
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Entry."
+    // Validate request
+    if (!req.body) {
+      res.status(400).send({
+        message: "Content can not be empty!"
       });
-    else res.send(data);
-  });
+    }
   
-};
+    // Create a Customer
+    const customer = new Customer({
+      email: req.body.email,
+      name: req.body.name,
+      active: req.body.active
+    });
+  
+    // Save Customer in the database
+    Customer.create(customer, (err, data) => {
+      if (err)
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while creating the Customer."
+        });
+      else res.send(data);
+    });
+  };
 
-// Retrieve all Entrys from the database.
+// Retrieve all Customers from the database.
 exports.findAll = (req, res) => {
-    Entry.getAll((err, data) => {
-        if (err)
-          res.status(500).send({
-            message:
-              err.message || "Some error occurred while retrieving entries."
-          });
-        else res.send(data);
-      });
-  
-};
+    Customer.getAll((err, data) => {
+      if (err)
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving customers."
+        });
+      else res.send(data);
+    });
+  };
 
-// Find a single Entry with a entryId
+// Find a single Customer with a customerId
 exports.findOne = (req, res) => {
-    Entry.findById(req.params.entryId, (err, data) => {
-    if (err) {
-        if (err.kind === "not_found") {
-          res.status(404).send({
-            message: `Not found Entry with id ${req.params.entryId}.`
-          });
-        } else {
-          res.status(500).send({
-            message: "Error retrieving Entry with id " + req.params.entryId
-          });
-        }
-      } else res.send(data);
-    });
-};
-
-// Update a Entry identified by the entryId in the request
-exports.update = (req, res) => {
-
-  // Validate Request
-  if (!req.body) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
-  }
-
-  Entry.updateById(
-    req.params.entryId,
-    new Entry(req.body),
-    (err, data) => {
+    Customer.findById(req.params.customerId, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Entry with id ${req.params.entryId}.`
+            message: `Not found Customer with id ${req.params.customerId}.`
           });
         } else {
           res.status(500).send({
-            message: "Error updating Customer with id " + req.params.entryId
+            message: "Error retrieving Customer with id " + req.params.customerId
           });
         }
       } else res.send(data);
-    }
-  );
-};
+    });
+  };
 
-// Delete a Entry with the specified entryId in the request
-exports.delete = (req, res) => {
-    Entry.remove(req.params.entryId, (err, data) => {
+// Update a Customer identified by the customerId in the request
+exports.update = (req, res) => {
+    // Validate Request
+    if (!req.body) {
+      res.status(400).send({
+        message: "Content can not be empty!"
+      });
+    }
+  
+    Customer.updateById(
+      req.params.customerId,
+      new Customer(req.body),
+      (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
-              message: `Not found Entry with id ${req.params.entryId}.`
+              message: `Not found Customer with id ${req.params.customerId}.`
             });
           } else {
             res.status(500).send({
-              message: "Could not delete Entry with id " + req.params.entryId
+              message: "Error updating Customer with id " + req.params.customerId
             });
           }
-        } else res.send({ message: `Entry was deleted successfully!` });
-      });
-  
-};
+        } else res.send(data);
+      }
+    );
+  };
 
-// Delete all Entries from the database.
-exports.deleteAll = (req, res) => {
-    Entry.removeAll((err, data) => {
-        if (err)
-          res.status(500).send({
-            message:
-              err.message || "Some error occurred while removing all entries."
+// Delete a Customer with the specified customerId in the request
+exports.delete = (req, res) => {
+    Customer.remove(req.params.customerId, (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Customer with id ${req.params.customerId}.`
           });
-        else res.send({ message: `All Entries were deleted successfully!` });
-      });
-};
+        } else {
+          res.status(500).send({
+            message: "Could not delete Customer with id " + req.params.customerId
+          });
+        }
+      } else res.send({ message: `Customer was deleted successfully!` });
+    });
+  };
+
+// Delete all Customers from the database.
+exports.deleteAll = (req, res) => {
+    Customer.removeAll((err, data) => {
+      if (err)
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while removing all customers."
+        });
+      else res.send({ message: `All Customers were deleted successfully!` });
+    });
+  };
