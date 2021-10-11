@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 // parse requests of content-type: application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// use Heroku-defined port there; 3000 when run locally
+// use Heroku-defined port
 const port = process.env.PORT || 3000;
 
 app.use(express.static('public'));
