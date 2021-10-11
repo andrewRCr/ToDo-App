@@ -1,27 +1,27 @@
 const sql = require("./db.js");
 
 // constructor
-const Entry = function(user) {
-  this.app = user.app;
-  this.username = user.username;
-  this.password = user.password;
+const Entry = function(entry) {
+  this.app = entry.app;
+  this.entryname = entry.entryname;
+  this.password = entry.password;
 };
 
 Entry.create = (newEntry, result) => {
-  sql.query("INSERT INTO users SET ?", newEntry, (err, res) => {
+  sql.query("INSERT INTO entrys SET ?", newEntry, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }
 
-    console.log("created user: ", { id: res.insertId, ...newEntry });
+    console.log("created entry: ", { id: res.insertId, ...newEntry });
     result(null, { id: res.insertId, ...newEntry });
   });
 };
 
-Entry.findById = (userId, result) => {
-  sql.query(`SELECT * FROM users WHERE id = ${userId}`, (err, res) => {
+Entry.findById = (entryId, result) => {
+  sql.query(`SELECT * FROM entrys WHERE id = ${entryId}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -29,7 +29,7 @@ Entry.findById = (userId, result) => {
     }
 
     if (res.length) {
-      console.log("found user: ", res[0]);
+      console.log("found entry: ", res[0]);
       result(null, res[0]);
       return;
     }
@@ -40,22 +40,22 @@ Entry.findById = (userId, result) => {
 };
 
 Entry.getAll = result => {
-  sql.query("SELECT * FROM users", (err, res) => {
+  sql.query("SELECT * FROM entrys", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
 
-    console.log("users: ", res);
+    console.log("entrys: ", res);
     result(null, res);
   });
 };
 
-Entry.updateById = (id, user, result) => {
+Entry.updateById = (id, entry, result) => {
   sql.query(
-    "UPDATE users SET app = ?, username = ?, password = ? WHERE id = ?",
-    [user.app, user.username, user.password, id],
+    "UPDATE entrys SET app = ?, entryname = ?, password = ? WHERE id = ?",
+    [entry.app, entry.entryname, entry.password, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -69,14 +69,14 @@ Entry.updateById = (id, user, result) => {
         return;
       }
 
-      console.log("updated user: ", { id: id, ...user });
-      result(null, { id: id, ...user });
+      console.log("updated entry: ", { id: id, ...entry });
+      result(null, { id: id, ...entry });
     }
   );
 };
 
 Entry.remove = (id, result) => {
-  sql.query("DELETE FROM users WHERE id = ?", id, (err, res) => {
+  sql.query("DELETE FROM entrys WHERE id = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -89,20 +89,20 @@ Entry.remove = (id, result) => {
       return;
     }
 
-    console.log("deleted user with id: ", id);
+    console.log("deleted entry with id: ", id);
     result(null, res);
   });
 };
 
 Entry.removeAll = result => {
-  sql.query("DELETE FROM users", (err, res) => {
+  sql.query("DELETE FROM entrys", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
 
-    console.log(`deleted ${res.affectedRows} users`);
+    console.log(`deleted ${res.affectedRows} entrys`);
     result(null, res);
   });
 };

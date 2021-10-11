@@ -26,16 +26,6 @@ require("./app/routes/entry.routes.js")(app);
 
 app.listen(port, () => console.log(`App listening at http://localhost:${port}; ctrl + C to stop.`));
 
-// MICROSERVICE - DATABASE + REST API
-
-// CREATE TABLE IF NOT EXISTS `customers` (
-//     id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-//     email varchar(255) NOT NULL,
-//     name varchar(255) NOT NULL,
-//     active BOOLEAN DEFAULT false
-//   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-  
-
 
 // TODO APP
 
