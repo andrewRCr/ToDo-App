@@ -79,7 +79,7 @@ exports.update = (req, res) => {
               message: "Error updating Entry with id " + req.params.entryId
             });
           }
-        } else res.send(data, {message: "Entry with id " + req.params.entryId + " updated succesfully."});
+        } else res.send(data);
       }
     );
   };
