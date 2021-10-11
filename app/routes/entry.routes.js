@@ -16,6 +16,6 @@ module.exports = app => {
   // Delete an Entry with entryId
   app.delete("/entries/:entryId", entries.delete);
 
-  // Create a new Entry
+  // Delete all Entries
   app.delete("/entries", entries.deleteAll);
 };
