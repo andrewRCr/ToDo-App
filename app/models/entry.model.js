@@ -3,7 +3,7 @@ const sql = require("./db.js");
 // constructor
 const Entry = function(entry) {
   this.app = entry.app;
-  this.entryname = entry.entryname;
+  this.username = entry.username;
   this.password = entry.password;
 };
 
@@ -12,7 +12,7 @@ Entry.create = (newEntry, result) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
-      return;
+      return;111
     }
 
     console.log("created entry: ", { id: res.insertId, ...newEntry });
@@ -54,8 +54,8 @@ Entry.getAll = result => {
 
 Entry.updateById = (id, entry, result) => {
   sql.query(
-    "UPDATE entry SET app = ?, entryname = ?, password = ? WHERE id = ?",
-    [entry.app, entry.entryname, entry.password, id],
+    "UPDATE entry SET app = ?, username = ?, password = ? WHERE id = ?",
+    [entry.app, entry.username, entry.password, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);

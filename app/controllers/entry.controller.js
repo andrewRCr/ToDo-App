@@ -12,7 +12,7 @@ exports.create = (req, res) => {
 
   // Create an Entry
   const entry = new Entry({
-    app: req.body.email,
+    app: req.body.app,
     username: req.body.username,
     password: req.body.password
   });
