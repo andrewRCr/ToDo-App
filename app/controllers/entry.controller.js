@@ -1,5 +1,7 @@
 const Entry = require("../models/entry.model.js");
 
+obj = Object.keys(req.body);
+
 // Create and Save a new Entry
 exports.create = (req, res) => {
     // Validate request
@@ -17,9 +19,9 @@ exports.create = (req, res) => {
     // });
 
       const entry = new Entry({
-        app: Object.keys(req.body)[1],
-        username: Object.keys(req.body)[2],
-        password: Object.keys(req.body)[3]
+        app: Object.keys(obj)[1],
+        username: Object.keys(obj)[2],
+        password: Object.keys(obj)[3]
     });
   
     // Save Entry in the database
