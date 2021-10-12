@@ -13,7 +13,7 @@ exports.create = (req, res) => {
     // Create an Entry
     const entry = new Entry({
       app: req.body.app,
-      un: req.body.username,
+      username: req.body.username,
       password: req.body.password
     });
 
