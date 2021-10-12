@@ -1,6 +1,5 @@
 const Entry = require("../models/entry.model.js");
 
-obj = Object.keys(req.body);
 
 // Create and Save a new Entry
 exports.create = (req, res) => {
@@ -18,10 +17,12 @@ exports.create = (req, res) => {
     //   password: req.body.password
     // });
 
+      let reqBodyArray = [req.body.app, req.body.username, req.body.password];
+
       const entry = new Entry({
-        app: Object.keys(obj)[1],
-        username: Object.keys(obj)[2],
-        password: Object.keys(obj)[3]
+        app: reqBodyArray[0],
+        username: reqBodyArray[1],
+        password: reqBodyArray[2]
     });
   
     // Save Entry in the database
