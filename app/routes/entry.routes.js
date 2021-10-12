@@ -7,7 +7,7 @@ module.exports = app => {
   // Retrieve all Entries
   app.get("/entries", entries.findAll);
 
-  // Retrieve a single Entry with entryId
+  // Retrieve any Entries with entryId (search_id)
   app.get("/entries/:entryId", entries.findOneByID);
 
   // Update an Entry with entryId

@@ -21,7 +21,7 @@ Entry.create = (newEntry, result) => {
 };
 
 Entry.findById = (entryId, result) => {
-  sql.query(`SELECT * FROM entries WHERE id = ${entryId}`, (err, res) => {
+  sql.query(`SELECT * FROM entries WHERE search_id = '${entryId}'`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
