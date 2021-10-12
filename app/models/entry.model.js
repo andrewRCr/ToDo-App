@@ -28,9 +28,13 @@ Entry.findById = (entryId, result) => {
       return;
     }
 
+    // if (res.length) {
+    //   console.log("found entry: ", res[0]);
+    //   result(null, res[0]);
+    //   return;
     if (res.length) {
-      console.log("found entry: ", res[0]);
-      result(null, res[0]);
+      console.log("found: ", res);
+      result(null, res);
       return;
     }
 
