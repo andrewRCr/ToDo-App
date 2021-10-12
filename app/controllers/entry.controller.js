@@ -6,42 +6,41 @@ require('dotenv').config();
 // Create and Save a new Entry
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body) {
-      res.status(400).send({
-        message: "Content can not be empty!"
-      });
-      return;
-    }
+    // if (!req.body) {
+    //   res.status(400).send({
+    //     message: "Content can not be empty!"
+    //   });
+    //   return;
+    // }
 
-    if (req.body.keyword != process.env.magicword) {
-      res.status(400).send({
-        message: "Keyword doesn't match!"
-      });
-      return;
-    }
+    // if (req.body.keyword != process.env.magicword) {
+    //   res.status(400).send({
+    //     message: "Keyword doesn't match!"
+    //   });
+    //   return;
+    // }
     
 
-    // Create an Entry
-    const entry = new Entry({
-      app: req.body.app,
-      username: req.body.username,
-      password: req.body.password
-    });
+    // // Create an Entry
+    // const entry = new Entry({
+    //   app: req.body.app,
+    //   username: req.body.username,
+    //   password: req.body.password
+    // });
 
   
-    // Save Entry in the database
-    Entry.create(entry, (err, data) => {
-      if (err) {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the Entry."
-        });
-      }
-      else res.send(data);
-    });
+    // // Save Entry in the database
+    // Entry.create(entry, (err, data) => {
+    //   if (err) {
+    //     res.status(500).send({
+    //       message:
+    //         err.message || "Some error occurred while creating the Entry."
+    //     });
+    //   }
+    //   else res.send(data);
+    // });
 
-  
-
+    res.send("This is a message from CS361");
   };
 
 // Retrieve all Entries from the database
