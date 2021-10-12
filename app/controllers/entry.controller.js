@@ -11,19 +11,19 @@ exports.create = (req, res) => {
     }
   
     // Create an Entry
-    // const entry = new Entry({
-    //   app: req.body.app,
-    //   username: req.body.username,
-    //   password: req.body.password
-    // });
-
-      let reqBodyArray = [req.body.app, req.body.username, req.body.password];
-
-      const entry = new Entry({
-        app: reqBodyArray[0],
-        username: reqBodyArray[1],
-        password: reqBodyArray[2]
+    const entry = new Entry({
+      app: req.body.app,
+      un: req.body.username,
+      password: req.body.password
     });
+
+    //   let reqBodyArray = [req.body.app, req.body.username, req.body.password];
+
+    //   const entry = new Entry({
+    //     app: reqBodyArray[0],
+    //     un: reqBodyArray[1],
+    //     password: reqBodyArray[2]
+    // });
   
     // Save Entry in the database
     Entry.create(entry, (err, data) => {
