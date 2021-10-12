@@ -67,6 +67,29 @@ exports.findAll = (req, res) => {
     });
   };
 
+// Retrieve all Entries from the database that match app
+exports.findAllApp = (req, res) => {
+  // authenticate
+  if (req.body.keyword != process.env.magicword) {
+    res.status(400).send({
+      message: "Keyword doesn't match!"
+    });
+    return;
+  }
+
+    Entry.getAllApp((err, data) => {
+      if (err) {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving entries."
+        });
+        return;
+      }
+
+      else res.send(data);
+    });
+  };
+
 // Find a single Entry with an entryId
 exports.findOneByID = (req, res) => {
   // authenticate

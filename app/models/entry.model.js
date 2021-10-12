@@ -52,6 +52,19 @@ Entry.getAll = result => {
   });
 };
 
+Entry.getAllApp = result => {
+  sql.query(`SELECT * FROM entries WHERE app = ${app}`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("entries: ", res);
+    result(null, res);
+  });
+};
+
 Entry.updateById = (id, entry, result) => {
   sql.query(
     "UPDATE entries SET app = ?, username = ?, password = ? WHERE id = ?",
