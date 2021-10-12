@@ -10,10 +10,16 @@ exports.create = (req, res) => {
     }
   
     // Create an Entry
-    const entry = new Entry({
-      app: req.body.app,
-      username: req.body.username,
-      password: req.body.password
+    // const entry = new Entry({
+    //   app: req.body.app,
+    //   username: req.body.username,
+    //   password: req.body.password
+    // });
+
+      const entry = new Entry({
+        app: Object.keys(req.body)[1],
+        username: Object.keys(req.body)[2],
+        password: Object.keys(req.body)[3]
     });
   
     // Save Entry in the database
