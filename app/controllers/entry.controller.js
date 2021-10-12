@@ -1,4 +1,6 @@
 const Entry = require("../models/entry.model.js");
+require('dotenv').config();
+
 
 
 // Create and Save a new Entry
@@ -9,6 +11,12 @@ exports.create = (req, res) => {
         message: "Content can not be empty!"
       });
     }
+    
+    if (req.body.keyword != process.env.magicword) {
+      res.status(400).send({
+        message: "Keyword doesn't match!"
+      });
+    }
   
     // Create an Entry
     const entry = new Entry({
@@ -17,13 +25,6 @@ exports.create = (req, res) => {
       password: req.body.password
     });
 
-    //   let reqBodyArray = [req.body.app, req.body.username, req.body.password];
-
-    //   const entry = new Entry({
-    //     app: reqBodyArray[0],
-    //     un: reqBodyArray[1],
-    //     password: reqBodyArray[2]
-    // });
   
     // Save Entry in the database
     Entry.create(entry, (err, data) => {

@@ -3,6 +3,7 @@
 // Fall 2021
 
 // SETUP AND ROUTING
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require("body-parser");
 const app = express();
@@ -44,3 +45,5 @@ function addTask(text) {
     tasks.push(task);
     console.log(tasks);
 }
+
+console.log(process.env.magicword)
