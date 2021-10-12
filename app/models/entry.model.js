@@ -39,24 +39,6 @@ Entry.findById = (entryId, result) => {
   });
 };
 
-Entry.findByApp = (entryId, result) => {
-  sql.query(`SELECT * FROM entries WHERE app = '${app}'`, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
-    }
-
-    if (res.length) {
-      console.log("found: ", res);
-      result(null, res);
-      return;
-    }
-
-    // not found Entry with the app
-    result({ kind: "not_found" }, null);
-  });
-};
 
 Entry.getAll = result => {
   sql.query("SELECT * FROM entries", (err, res) => {

@@ -33,7 +33,8 @@ module.exports = {
 // https://mighty-beyond-55909.herokuapp.com/entries
 
 // database entry format (JSON):
-// app, username, password (id is auto-generated and assigned)
+// app, username, password (id (INT, auto-increment) and search_id (app_username) are both auto-generated and assigned)
+// GET an individual 
 //
 // e.g.,
 // {
@@ -43,10 +44,10 @@ module.exports = {
 // }
 
 // rest API methods available:
-// method    url            action
-// GET	    /entries	     get all Entries
-// GET	    /entries/2	   get Entry with id=2
-// POST	    /entries	     add new Entry
-// PUT	    /entries/2	   update Entry with id=2
-// DELETE	  /entries/2	   remove Entry with id=2
-// DELETE	  /entries	     remove all Entries
+// method    url                        action
+// GET	    /entries	                   get all Entries
+// GET	    /entries/DeusEx_jcdenton	   get any Entry with app: DeusEx and username: jcdenton
+// POST	    /entries	                   add new Entry
+// PUT	    /entries/2	                 update Entry with id=2
+// DELETE	  /entries/2	                 remove Entry with id=2
+// DELETE	  /entries	                   remove all Entries
