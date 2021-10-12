@@ -12,12 +12,8 @@ exports.create = (req, res) => {
       });
     }
 
-    if (req.body.keyword != process.env.magicword) {
-      res.status(400).send({
-        message: "Keyword doesn't match!!"
-      });
-    }
-  
+    if (req.body.keyword == process.env.magicword) {
+      
     // Create an Entry
     const entry = new Entry({
       app: req.body.app,
@@ -35,6 +31,10 @@ exports.create = (req, res) => {
         });
       else res.send(data);
     });
+
+    }
+  
+
   };
 
 // Retrieve all Entries from the database
