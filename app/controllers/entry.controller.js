@@ -11,10 +11,10 @@ exports.create = (req, res) => {
         message: "Content can not be empty!"
       });
     }
-    
+
     if (req.body.keyword != process.env.magicword) {
       res.status(400).send({
-        message: "Keyword doesn't match!"
+        message: "Keyword doesn't match!!"
       });
     }
   
