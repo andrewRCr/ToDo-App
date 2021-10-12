@@ -31,11 +31,12 @@ exports.create = (req, res) => {
   
     // Save Entry in the database
     Entry.create(entry, (err, data) => {
-      if (err)
+      if (err) {
         res.status(500).send({
           message:
             err.message || "Some error occurred while creating the Entry."
         });
+      }
       else res.send(data);
     });
 
@@ -46,11 +47,20 @@ exports.create = (req, res) => {
 // Retrieve all Entries from the database
 exports.findAll = (req, res) => {
     Entry.getAll((err, data) => {
-      if (err)
+      if (err) {
         res.status(500).send({
           message:
             err.message || "Some error occurred while retrieving entries."
         });
+        return;
+      }
+
+      if (req.body.keyword != process.env.magicword) {
+        res.status(400).send({
+          message: "Keyword doesn't match!"
+        });
+        return;
+      }
       else res.send(data);
     });
   };
@@ -58,15 +68,24 @@ exports.findAll = (req, res) => {
 // Find a single Entry with an entryId
 exports.findOne = (req, res) => {
     Entry.findById(req.params.entryId, (err, data) => {
+      if (req.body.keyword != process.env.magicword) {
+        res.status(400).send({
+          message: "Keyword doesn't match!"
+        });
+        return;
+      }
+
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
             message: `Not found: Entry with id ${req.params.entryId}.`
           });
+          return;
         } else {
           res.status(500).send({
             message: "Error retrieving Entry with id " + req.params.entryId
           });
+          return;
         }
       } else res.send(data);
     });
@@ -79,6 +98,14 @@ exports.update = (req, res) => {
       res.status(400).send({
         message: "Content cannot be empty!"
       });
+      return;
+    }
+
+    if (req.body.keyword != process.env.magicword) {
+      res.status(400).send({
+        message: "Keyword doesn't match!"
+      });
+      return;
     }
   
     Entry.updateById(
@@ -103,6 +130,12 @@ exports.update = (req, res) => {
 // Delete an Entry with the specified entryId in the request
 exports.delete = (req, res) => {
     Entry.remove(req.params.entryId, (err, data) => {
+      if (req.body.keyword != process.env.magicword) {
+        res.status(400).send({
+          message: "Keyword doesn't match!"
+        });
+        return;
+      }
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
@@ -120,6 +153,13 @@ exports.delete = (req, res) => {
 // Delete all Entries from the database.
 exports.deleteAll = (req, res) => {
     Entry.removeAll((err, data) => {
+      if (req.body.keyword != process.env.magicword) {
+        res.status(400).send({
+          message: "Keyword doesn't match!"
+        });
+        return;
+      }
+      
       if (err)
         res.status(500).send({
           message:
