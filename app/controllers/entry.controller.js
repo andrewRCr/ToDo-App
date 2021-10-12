@@ -55,12 +55,12 @@ exports.findAll = (req, res) => {
         return;
       }
 
-      if (req.body.keyword != process.env.magicword) {
-        res.status(400).send({
-          message: "Keyword doesn't match!"
-        });
-        return;
-      }
+      // if (req.body.keyword != process.env.magicword) {
+      //   res.status(400).send({
+      //     message: "Keyword doesn't match!"
+      //   });
+      //   return;
+      // }
       else res.send(data);
     });
   };
@@ -68,12 +68,12 @@ exports.findAll = (req, res) => {
 // Find a single Entry with an entryId
 exports.findOne = (req, res) => {
     Entry.findById(req.params.entryId, (err, data) => {
-      if (req.body.keyword != process.env.magicword) {
-        res.status(400).send({
-          message: "Keyword doesn't match!"
-        });
-        return;
-      }
+      // if (req.body.keyword != process.env.magicword) {
+      //   res.status(400).send({
+      //     message: "Keyword doesn't match!"
+      //   });
+      //   return;
+      // }
 
       if (err) {
         if (err.kind === "not_found") {
@@ -159,7 +159,7 @@ exports.deleteAll = (req, res) => {
         });
         return;
       }
-      
+
       if (err)
         res.status(500).send({
           message:
