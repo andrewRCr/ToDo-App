@@ -46,6 +46,14 @@ exports.create = (req, res) => {
 
 // Retrieve all Entries from the database
 exports.findAll = (req, res) => {
+  // authenticate
+  if (req.body.keyword != process.env.magicword) {
+    res.status(400).send({
+      message: "Keyword doesn't match!"
+    });
+    return;
+  }
+
     Entry.getAll((err, data) => {
       if (err) {
         res.status(500).send({
@@ -55,26 +63,20 @@ exports.findAll = (req, res) => {
         return;
       }
 
-      // if (req.body.keyword != process.env.magicword) {
-      //   res.status(400).send({
-      //     message: "Keyword doesn't match!"
-      //   });
-      //   return;
-      // }
       else res.send(data);
     });
   };
 
 // Find a single Entry with an entryId
 exports.findOne = (req, res) => {
+  // authenticate
+  if (req.body.keyword != process.env.magicword) {
+    res.status(400).send({
+      message: "Keyword doesn't match!"
+    });
+    return;
+  }
     Entry.findById(req.params.entryId, (err, data) => {
-      // if (req.body.keyword != process.env.magicword) {
-      //   res.status(400).send({
-      //     message: "Keyword doesn't match!"
-      //   });
-      //   return;
-      // }
-
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
@@ -129,7 +131,7 @@ exports.update = (req, res) => {
 
 // Delete an Entry with the specified entryId in the request
 exports.delete = (req, res) => {
-  
+
   // authenticate
   if (req.body.keyword != process.env.magicword) {
     res.status(400).send({
