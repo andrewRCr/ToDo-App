@@ -3,7 +3,7 @@ const sql = require("./db.js");
 // constructor
 const Entry = function(entry) {
   this.app = entry.app;
-  this.un = entry.username;
+  this.username = entry.username;
   this.password = entry.password;
 };
 
