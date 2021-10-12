@@ -68,7 +68,7 @@ exports.findAll = (req, res) => {
   };
 
 // Find a single Entry with an entryId
-exports.findOne = (req, res) => {
+exports.findOneByID = (req, res) => {
   // authenticate
   if (req.body.keyword != process.env.magicword) {
     res.status(400).send({

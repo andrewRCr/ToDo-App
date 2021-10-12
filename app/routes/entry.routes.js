@@ -8,7 +8,7 @@ module.exports = app => {
   app.get("/entries", entries.findAll);
 
   // Retrieve a single Entry with entryId
-  app.get("/entries/:entryId", entries.findOne);
+  app.get("/entries/:entryId", entries.findOneByID);
 
   // Update an Entry with entryId
   app.put("/entries/:entryId", entries.update);
