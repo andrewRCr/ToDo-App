@@ -10,9 +10,6 @@ module.exports = app => {
   // Retrieve a single Entry with entryId
   app.get("/entries/:entryId", entries.findOneByID);
 
-    // Retrieve all Entries with app
-    app.get("/entries/:app", entries.findAllApp);
-
   // Update an Entry with entryId
   app.put("/entries/:entryId", entries.update);
 
