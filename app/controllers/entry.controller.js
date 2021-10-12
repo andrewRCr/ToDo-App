@@ -40,7 +40,7 @@ exports.create = (req, res) => {
     //   else res.send(data);
     // });
 
-    res.send("This is a message from CS361");
+    res.send(req.body);
   };
 
 // Retrieve all Entries from the database
