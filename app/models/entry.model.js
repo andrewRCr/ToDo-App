@@ -52,7 +52,7 @@ Entry.getAll = result => {
   });
 };
 
-Entry.getAllApp = result => {
+Entry.getAllApp = (app, result) => {
   sql.query(`SELECT * FROM entries WHERE app = ${app}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
