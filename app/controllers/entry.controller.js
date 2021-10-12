@@ -129,13 +129,16 @@ exports.update = (req, res) => {
 
 // Delete an Entry with the specified entryId in the request
 exports.delete = (req, res) => {
+  
+  // authenticate
+  if (req.body.keyword != process.env.magicword) {
+    res.status(400).send({
+      message: "Keyword doesn't match!"
+    });
+    return;
+  }
+
     Entry.remove(req.params.entryId, (err, data) => {
-      if (req.body.keyword != process.env.magicword) {
-        res.status(400).send({
-          message: "Keyword doesn't match!"
-        });
-        return;
-      }
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
@@ -152,14 +155,16 @@ exports.delete = (req, res) => {
 
 // Delete all Entries from the database.
 exports.deleteAll = (req, res) => {
-    Entry.removeAll((err, data) => {
-      if (req.body.keyword != process.env.magicword) {
-        res.status(400).send({
-          message: "Keyword doesn't match!"
-        });
-        return;
-      }
 
+  // authenticate
+  if (req.body.keyword != process.env.magicword) {
+    res.status(400).send({
+      message: "Keyword doesn't match!"
+    });
+    return;
+  }
+
+    Entry.removeAll((err, data) => {
       if (err)
         res.status(500).send({
           message:
