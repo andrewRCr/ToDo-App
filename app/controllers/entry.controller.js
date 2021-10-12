@@ -95,6 +95,32 @@ exports.findOneByID = (req, res) => {
     });
   };
 
+// Find any Entry with an app
+exports.findOneByApp = (req, res) => {
+  // authenticate
+  if (req.body.keyword != process.env.magicword) {
+    res.status(400).send({
+      message: "Keyword doesn't match!"
+    });
+    return;
+  }
+    Entry.findByApp(req.params.app, (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found: Entry with app ${req.params.app}.`
+          });
+          return;
+        } else {
+          res.status(500).send({
+            message: "Error retrieving Entry with app " + req.params.app
+          });
+          return;
+        }
+      } else res.send(data);
+    });
+  };
+
 // Update an Entry identified by the entryId in the request
 exports.update = (req, res) => {
     // Validate Request
