@@ -108,13 +108,12 @@ h1 {
   margin-left: 10px;
   font-size: 1.1rem;
   font-weight: 550;
-  visibility: hidden;
+  display: none;
 }
 
-.delete-button:hover {
-  visibility: visible;
+.item:hover .delete-button{
+  display: block;
 }
-
 
 /* applied when the todo item is checked */
 .checked { 
