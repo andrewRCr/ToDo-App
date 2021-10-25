@@ -130,7 +130,7 @@ h1 {
   margin-left: 10px;
   font-size: 1.1rem;
   font-weight: 550;
-  display: none;
+  display: hidden;
 }
 
 .item:hover .delete-button{
