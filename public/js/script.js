@@ -1,3 +1,5 @@
+// ./public/js/script.js
+
 // TODO APP
 
 // select everything

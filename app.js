@@ -7,18 +7,21 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require("body-parser");
 const app = express();
+var exphbs = require('express-handlebars');     // Import express-handlebars
+app.engine('.hbs', exphbs({                     // Create an instance of the handlebars engine to process templates
+    extname: ".hbs"
+}));
 
-// parse requests of content-type: application/json
-app.use(bodyParser.json());
-
-// parse requests of content-type: application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+// handle JSON and form data
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
 // use Heroku-defined port
 const port = process.env.PORT || 3000;
 
+// set public folder and templating engine
 app.use(express.static('public'));
-// app.set('view engine', 'ejs');
+app.set('view engine', '.hbs');
 
 // define default route
 app.get('/', (req, res) => res.render('index'))
@@ -26,4 +29,4 @@ app.get('/', (req, res) => res.render('index'))
 require("./app/routes/entry.routes.js")(app);
 
 
-  app.listen(port, () => console.log(`App listening at http://localhost:${port}; ctrl + C to stop.`));
+app.listen(port, () => console.log(`App listening at http://localhost:${port}; ctrl + C to stop.`));
