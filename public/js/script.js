@@ -142,6 +142,17 @@ function deleteTodo(id) {
   addToLocalStorage(todos);
 }
 
+// function to EDIT todo
+function editTodo(id) {
+  todos.forEach(function(item) {
+    // use == not ===, because here types are different. One is number and other is string
+    if (item.id == id) {
+      todoInput.value = item.name;
+      dateInput.value = item.date;
+    }
+  });
+}
+
 // initially get everything from localStorage
 getFromLocalStorage();
 
