@@ -5,8 +5,10 @@
 // select everything
 // select the todo-form
 const todoForm = document.querySelector('.todo-form');
-// select the input box
+// select the task input box
 const todoInput = document.querySelector('.todo-input');
+// select the date input box
+const dateInput = document.querySelector('.date-input');
 // select the <ul> with class="todo-items"
 const todoItemsList = document.querySelector('.todo-items');
 
@@ -21,13 +23,14 @@ todoForm.addEventListener('submit', function(event) {
 });
 
 // function to add todo
-function addTodo(item) {
+function addTodo(item, dueDate) {
   // if item is not empty
   if (item !== '') {
     // make a todo object, which has id, name, and completed properties
     const todo = {
       id: Date.now(),
       name: item,
+      date: dueDate,
       completed: false
     };
 
@@ -70,6 +73,7 @@ function renderTodos(todos) {
     li.innerHTML = `
       <input type="checkbox" class="checkbox" ${checked}>
       ${item.name}
+      ${item.date}
       <button class="delete-button">X</button>
     `;
     // finally add the <li> to the <ul>
