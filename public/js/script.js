@@ -19,14 +19,14 @@ let todos = [];
 todoForm.addEventListener('submit', function(event) {
   // prevent the page from reloading when submitting the form
   event.preventDefault();
-  addTodo(todoInput.value); // call addTodo function with input box current value
+  addTodo(todoInput.value, dateInput.value); // call addTodo function with the input box current values
 });
 
 // function to add todo
 function addTodo(item, dueDate) {
-  // if item is not empty
-  if (item !== '') {
-    // make a todo object, which has id, name, and completed properties
+  // if item and dueDate are not empty
+  if (item !== '' && dueDate !== '') {
+    // make a todo object, which has id, name, date, and completed properties
     const todo = {
       id: Date.now(),
       name: item,
@@ -38,9 +38,30 @@ function addTodo(item, dueDate) {
     todos.push(todo);
     renderTodos(todos); // then renders them between <ul>
 
-    // finally clear the input box value
+    // finally clear the input box values
     todoInput.value = '';
+    dateInput.value = '';
   }
+
+  // if item is not empty (no due date entered)
+  if (item !== '') {
+    // make a todo object, which has id, name, an empty date, and completed properties
+    const todo = {
+      id: Date.now(),
+      name: item,
+      date: '',
+      completed: false
+    };
+
+    // then add it to todos array
+    todos.push(todo);
+    renderTodos(todos); // then renders them between <ul>
+
+    // finally clear the input box values
+    todoInput.value = '';
+    dateInput.value = '';
+  }
+
 }
 
 // function to render given todos to screen
