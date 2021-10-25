@@ -127,6 +127,17 @@ h1 {
   cursor: pointer;
 }
 
+.edit-button {
+  float: right;
+  border: none;
+  padding: 2px 5px;
+  margin-left: 10px;
+  visibility: hidden;
+}
+
+.edit-button:hover {
+  cursor: pointer;
+}
 
 .delete-button {
   float: right;
@@ -146,7 +157,11 @@ h1 {
   background-color: rgb(5, 7, 155);
 }
 
-.item:hover .delete-button{
+.item:hover .edit-button {
+  visibility: visible;
+}
+
+.item:hover .delete-button {
   visibility: visible;
 }
 

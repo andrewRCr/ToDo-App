@@ -78,6 +78,7 @@ function renderTodos(todos) {
       <input type="checkbox" class="checkbox" ${checked}>
       ${item.name}
       <button class="delete-button">X</button>
+      <button class="edit-button">(edit)</button>
       <button class="date-button"><span>due: ${item.date}</span></button>
   
     `;
@@ -89,7 +90,7 @@ function renderTodos(todos) {
       <input type="checkbox" class="checkbox" ${checked}>
       ${item.name}
       <button class="delete-button">X</button>
-  
+      <button class="edit-button">edit</button>
     `;
     }
 
@@ -171,7 +172,7 @@ todoItemsList.addEventListener('click', function(event) {
   }
 
     // check if that is a regular item click, for editing
-    if (event.target.classList.contains('item')) {
+    if (event.target.classList.contains('edit-button')) {
       // get id from data-key attribute's value of parent <li> where the item is present
       editTodo(event.target.parentElement.getAttribute('data-key'));
     }
