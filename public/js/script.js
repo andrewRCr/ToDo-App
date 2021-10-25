@@ -170,6 +170,12 @@ todoItemsList.addEventListener('click', function(event) {
     deleteTodo(event.target.parentElement.getAttribute('data-key'));
   }
 
+    // check if that is a regular item click, for editing
+    if (event.target.classList.contains('item')) {
+      // get id from data-key attribute's value of parent <li> where the item is present
+      editTodo(event.target.parentElement.getAttribute('data-key'));
+    }
+
     // // check if that is a date-button push 
     // if (event.target.classList.contains('date-button')) {
     //   // get id from data-key attribute's value of parent <li> where the delete-button is present
