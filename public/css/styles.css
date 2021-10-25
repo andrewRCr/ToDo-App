@@ -137,6 +137,8 @@ h1 {
 
 .edit-button:hover {
   cursor: pointer;
+  background-color: rgb(5, 7, 155);
+  color: #fff;
 }
 
 .delete-button {
@@ -155,6 +157,7 @@ h1 {
 .delete-button:hover {
   cursor: pointer;
   background-color: rgb(5, 7, 155);
+  color: #fff;
 }
 
 .item:hover .edit-button {
