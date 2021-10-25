@@ -20,7 +20,35 @@
 
     <script type="text/javascript" src="app.js">
 
+      function renderTask(task) {
+        // select the first element with a class of `js-task-list`
+        const list = document.querySelector('.js-task-list');
 
+        // use the ternary operator to check if `task.checked` is true
+        // if so, assign 'done' to `isChecked`. otherwise, assign an empty string
+        const isChecked = task.checked ? 'done': '';
+        // Create an `li` element and assign it to `node`
+        const node = document.createElement("li");
+        // set the class attribute
+        node.setAttribute('class', `task-item ${isChecked}`);
+        // set the data-key attribute to the id of the task
+        node.setAttribute('data-key', task.id);
+        // Set the contents of the `li` element created above
+        node.innerHTML = `
+          <input id="${task.id}" type="checkbox"/>
+          <label for="${task.id}" class="tick js-tick"></label>
+          <span>${task.text}</span>
+          <button class="delete-task js-delete-task">
+          <svg><use href="#delete-icon"></use></svg>
+          </button>
+        `;
+
+        // Append the element to the DOM as the last child of
+        // the element referenced by the `list` variable
+        list.append(node);
+      }
+
+    // ADD TASK DOM manipulation
     // select form element
     const form = document.querySelector('.js-form');
     // add submit event listener
@@ -38,6 +66,8 @@
           input.focus();
       }
     });
+
+
 
     </script>
 </body>

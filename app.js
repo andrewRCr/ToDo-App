@@ -50,7 +50,6 @@ function addTask(text) {
     };
 
     tasks.push(task);
-    console.log(tasks);
+    renderTask(task);
 }
 
-console.log(process.env.magicword)
