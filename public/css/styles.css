@@ -154,6 +154,9 @@ h1 {
 .checked { 
   text-decoration: line-through;
   font-style: italic;
+}
+
+.checked .text {
   opacity: 50%;
 }
 
