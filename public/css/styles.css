@@ -11,7 +11,7 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  background: linear-gradient(#F00000, #DC281E);
+  background: linear-gradient(#ffffff, #ffffff);
   font-family: sans-serif;
 }
 
@@ -36,7 +36,7 @@ ul {
 }
 
 h1 {
-  color: #fff;
+  color: rgb(5, 7, 155);
   font-size: 3rem;
 }
 
@@ -57,7 +57,7 @@ h1 {
 }
 
 .add-button {
-  background-color: #0000ff;
+  background-color: #4d4d4d;
   color: #fff;
   border: none;
   outline: none;
