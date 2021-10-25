@@ -109,12 +109,17 @@ h1 {
 }
 
 .date-button {
-  float: right;
+  float: none;
   border: none;
 }
 
+.date-button:hover {
+  cursor: pointer;
+  content: "push to calendar";
+}
+
 .delete-button {
-  float: inline-end;
+  float: right;
   background-color: #dc143c;
   border: none;
   outline: none;
