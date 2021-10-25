@@ -24,8 +24,8 @@ todoForm.addEventListener('submit', function(event) {
 
 // function to add todo
 function addTodo(item, dueDate) {
-  // if item and dueDate are not empty
-  if (item !== '' && dueDate !== '') {
+  // if item is not empty
+  if (item !== '') {
     // make a todo object, which has id, name, date, and completed properties
     const todo = {
       id: Date.now(),
@@ -43,24 +43,24 @@ function addTodo(item, dueDate) {
     dateInput.value = '';
   }
 
-  // if item is not empty but dueDate is (no due date entered)
-  else if (item !== '' && dueDate == '') {
-    // make a todo object, which has id, name, an empty date, and completed properties
-    const todo = {
-      id: Date.now(),
-      name: item,
-      date: 'none',
-      completed: false
-    };
+  // // if item is not empty but dueDate is (no due date entered)
+  // else if (item !== '' && dueDate == '') {
+  //   // make a todo object, which has id, name, an empty date, and completed properties
+  //   const todo = {
+  //     id: Date.now(),
+  //     name: item,
+  //     date: 'none',
+  //     completed: false
+  //   };
 
-    // then add it to todos array
-    todos.push(todo);
-    renderTodos(todos); // then renders them between <ul>
+  //   // then add it to todos array
+  //   todos.push(todo);
+  //   renderTodos(todos); // then renders them between <ul>
 
-    // finally clear the input box values
-    todoInput.value = '';
-    dateInput.value = '';
-  }
+  //   // finally clear the input box values
+  //   todoInput.value = '';
+  //   dateInput.value = '';
+  // }
 
 }
 
@@ -91,13 +91,26 @@ function renderTodos(todos) {
       li.classList.add('checked');
     }
 
-    li.innerHTML = `
+    // create with due date and date-button
+    if (item.date != '') {
+      li.innerHTML = `
       <input type="checkbox" class="checkbox" ${checked}>
       ${item.name}
       <button class="delete-button">X</button>
       <button class="date-button"><span>due: ${item.date}</span></button>
   
     `;
+    }
+
+    // create without due date or date-button
+    else if (item.date == '') {
+      li.innerHTML = `
+      <input type="checkbox" class="checkbox" ${checked}>
+      ${item.name}
+      <button class="delete-button">X</button>
+  
+    `;
+    }
 
     // finally add the <li> to the <ul>
     todoItemsList.append(li);
