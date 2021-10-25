@@ -153,6 +153,8 @@ h1 {
 /* applied when the todo item is checked */
 .checked { 
   text-decoration: line-through;
+  font-style: italic;
+  opacity: 50%;
 }
 
 /* todo-items style ends */
