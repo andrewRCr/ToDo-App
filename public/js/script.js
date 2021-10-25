@@ -42,26 +42,6 @@ function addTodo(item, dueDate) {
     todoInput.value = '';
     dateInput.value = '';
   }
-
-  // // if item is not empty but dueDate is (no due date entered)
-  // else if (item !== '' && dueDate == '') {
-  //   // make a todo object, which has id, name, an empty date, and completed properties
-  //   const todo = {
-  //     id: Date.now(),
-  //     name: item,
-  //     date: 'none',
-  //     completed: false
-  //   };
-
-  //   // then add it to todos array
-  //   todos.push(todo);
-  //   renderTodos(todos); // then renders them between <ul>
-
-  //   // finally clear the input box values
-  //   todoInput.value = '';
-  //   dateInput.value = '';
-  // }
-
 }
 
 // function to render given todos to screen
@@ -86,8 +66,9 @@ function renderTodos(todos) {
           Go to Gym
           <button class="delete-button">X</button>
         </li> */
+
     // if item is completed, then add a class to <li> called 'checked', which will add line-through style
-    if (item.completed === true) {
+    if (item.completed == true) {
       li.classList.add('checked');
     }
 
