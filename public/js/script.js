@@ -99,13 +99,6 @@ function renderTodos(todos) {
   
     `;
 
-    // add mouse hover event listener to any date buttons
-    var date_btn = document.querySelector(".date-button");
-
-    date_btn.addEventListener("mouseover", function() {
-      this.textContent = "push";
-    })
-
     // finally add the <li> to the <ul>
     todoItemsList.append(li);
   });

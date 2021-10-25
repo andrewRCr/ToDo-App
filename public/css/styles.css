@@ -117,11 +117,9 @@ h1 {
 
 .date-button:hover {
   cursor: pointer;
-}
-
-.date-button:hover .text{
   content: "push to calendar";
 }
+
 
 .delete-button {
   float: right;
