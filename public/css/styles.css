@@ -110,10 +110,11 @@ h1 {
 
 .date-button {
   float: right;
+  border: none;
 }
 
 .delete-button {
-  float: right;
+  float: inline-end;
   background-color: #dc143c;
   border: none;
   outline: none;
