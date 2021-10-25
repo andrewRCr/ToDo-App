@@ -143,12 +143,12 @@ h1 {
   float: right;
   background-color: #dc143c;
   border: none;
-  outline: none;
-  border-radius: 7px;
+  /*outline: none;*/
+  /*border-radius: 7px;*/
   padding: 2px 5px;
   margin-left: 10px;
-  font-size: 1.1rem;
-  font-weight: 550;
+  /*font-size: 1.1rem;
+  /*font-weight: 550;*/
   visibility: hidden;
 }
 

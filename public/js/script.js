@@ -78,7 +78,7 @@ function renderTodos(todos) {
       <input type="checkbox" class="checkbox" ${checked}>
       ${item.name}
       <button class="delete-button">X</button>
-      <button class="edit-button">(edit)</button>
+      <button class="edit-button">edit</button>
       <button class="date-button"><span>due: ${item.date}</span></button>
   
     `;
@@ -152,6 +152,9 @@ function editTodo(id) {
       dateInput.value = item.date;
     }
   });
+
+  // delete the previous version of the task
+  deleteTodo(id);
 }
 
 // initially get everything from localStorage
