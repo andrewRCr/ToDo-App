@@ -15,11 +15,6 @@ body {
   font-family: sans-serif;
 }
 
-button:hover {
-  cursor: pointer;
-  background-color: rgb(5, 7, 155);;
-}
-
 ul {
   list-style-type: none; /* get rid of bullet points on side of list items */
 }
@@ -76,6 +71,11 @@ h1 {
   font-size: 1.2rem;
 }
 
+.add-button:hover {
+  cursor: pointer;
+  background-color: rgb(5, 7, 155);
+}
+
 /* todo-form style ends */
 
 /* todo-items */
@@ -109,8 +109,11 @@ h1 {
 }
 
 .date-button {
-  float: none;
+  position:relative;
+  float: right;
   border: none;
+  padding: 2px 5px;
+  margin-left: 10px;
 }
 
 .date-button:hover {
