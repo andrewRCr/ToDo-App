@@ -115,9 +115,16 @@ h1 {
   margin-left: 10px;
 }
 
+.date-button:hover span {
+  display: none;
+}
+
+.date-button:hover:before {
+  content: "push to calendar";
+}
+
 .date-button:hover {
   cursor: pointer;
-  content: "push to calendar";
 }
 
 

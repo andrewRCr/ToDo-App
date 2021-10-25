@@ -95,7 +95,7 @@ function renderTodos(todos) {
       <input type="checkbox" class="checkbox" ${checked}>
       ${item.name}
       <button class="delete-button">X</button>
-      <button class="date-button">due: ${item.date}</button>
+      <button class="date-button"><span>due: ${item.date}</span></button>
   
     `;
 
