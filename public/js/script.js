@@ -43,13 +43,13 @@ function addTodo(item, dueDate) {
     dateInput.value = '';
   }
 
-  // if item is not empty (no due date entered)
-  if (item !== '') {
+  // if item is not empty but dueDate is (no due date entered)
+  if (item !== '' && dueDate == '') {
     // make a todo object, which has id, name, an empty date, and completed properties
     const todo = {
       id: Date.now(),
       name: item,
-      date: '',
+      date: 'none',
       completed: false
     };
 
@@ -94,7 +94,7 @@ function renderTodos(todos) {
     li.innerHTML = `
       <input type="checkbox" class="checkbox" ${checked}>
       ${item.name}
-      ${item.date}
+      due: ${item.date}
       <button class="delete-button">X</button>
     `;
     // finally add the <li> to the <ul>
