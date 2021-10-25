@@ -36,7 +36,7 @@ function addTodo(item, dueDate) {
 
     // then add it to todos array
     todos.push(todo);
-    renderTodos(todos); // then renders them between <ul>
+    addToLocalStorage(todos);
 
     // finally clear the input box values
     todoInput.value = '';
@@ -98,3 +98,24 @@ function renderTodos(todos) {
   });
 }
 
+// function to add todos to local storage
+function addToLocalStorage(todos) {
+  // convert the array to string, then store it
+  localStorage.setItem('todos', JSON.stringify(todos));
+  // render them to screen
+  renderTodos(todos);
+}
+
+// function helps to get everything from local storage
+function getFromLocalStorage() {
+  const reference = localStorage.getItem('todos');
+  // if reference exists
+  if (reference) {
+    // converts back to array and store it in todos array
+    todos = JSON.parse(reference);
+    renderTodos(todos);
+  }
+}
+
+// initially get everything from localStorage
+getFromLocalStorage();
