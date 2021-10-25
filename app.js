@@ -35,21 +35,5 @@ app.listen(port, () => console.log(`App listening at http://localhost:${port}; c
 
 
 
-// TODO APP
 
-// array to hold task items
-let tasks = [];
-
-// creates new task using text entered into text input + adds it to 'tasks' array
-function addTask(text) {
-    const task = {
-        text,
-        checked: false,
-        // create unique yet arbitrary id value
-        id: Date.now(),
-    };
-
-    tasks.push(task);
-    renderTask(task);
-}
 

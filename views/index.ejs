@@ -20,6 +20,11 @@
 
     <script type="text/javascript" src="app.js">
 
+      // TODO APP
+
+      // array to hold task items
+      let tasks = [];
+
       function renderTask(task) {
         // select the first element with a class of `js-task-list`
         const list = document.querySelector('.js-task-list');
@@ -48,24 +53,38 @@
         list.append(node);
       }
 
-    // ADD TASK DOM manipulation
-    // select form element
-    const form = document.querySelector('.js-form');
-    // add submit event listener
-    form.addEventListener('submit', event =>{
-      // no page auto-refresh on submit
-      event.preventDefault();
-      // select text input
-      const input = document.querySelector('.js-task-input');
+      // creates new task using text entered into text input + adds it to 'tasks' array
+      function addTask(text) {
+          const task = {
+              text,
+              checked: false,
+              // create unique yet arbitrary id value
+              id: Date.now(),
+          };
 
-      // get input value
-      const text = input.value.trim();
-      if (text !== '') {
-          addTask(text);
-          input.value = '';
-          input.focus();
+          tasks.push(task);
+          renderTask(task);
       }
-    });
+
+
+      // ADD TASK DOM manipulation
+      // select form element
+      const form = document.querySelector('.js-form');
+      // add submit event listener
+      form.addEventListener('submit', event =>{
+        // no page auto-refresh on submit
+        event.preventDefault();
+        // select text input
+        const input = document.querySelector('.js-task-input');
+
+        // get input value
+        const text = input.value.trim();
+        if (text !== '') {
+            addTask(text);
+            input.value = '';
+            input.focus();
+        }
+      });
 
 
 
