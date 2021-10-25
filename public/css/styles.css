@@ -73,11 +73,16 @@ h1 {
   min-width: 350px;
 }
 
+
 /* each li with class="item" */
 .item {
   background-color: #fff;
   padding: 10px;
   font-size: 1.1rem;
+}
+
+.item:hover + .delete-button {
+  display: block;
 }
 
 .item:first-child {
@@ -106,7 +111,9 @@ h1 {
   margin-left: 10px;
   font-size: 1.1rem;
   font-weight: 550;
+  display: none;
 }
+
 
 /* applied when the todo item is checked */
 .checked { 
