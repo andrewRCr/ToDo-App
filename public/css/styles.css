@@ -115,8 +115,11 @@ h1 {
   margin-left: 10px;
 }
 
-.date-button:hover .text{
+.date-button:hover {
   cursor: pointer;
+}
+
+.date-button:hover .text{
   content: "push to calendar";
 }
 
@@ -132,6 +135,11 @@ h1 {
   font-weight: 550;
   /*display: hidden;*/
   visibility: hidden;
+}
+
+.delete-button:hover {
+  cursor: pointer;
+  background-color: rgb(5, 7, 155);
 }
 
 .item:hover .delete-button{
