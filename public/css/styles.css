@@ -56,6 +56,16 @@ h1 {
   font-size: 1rem;
 }
 
+.date-input {
+  width: 250px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
 .add-button {
   background-color: #4d4d4d;
   color: #fff;
