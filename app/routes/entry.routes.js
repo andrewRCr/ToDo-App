@@ -7,6 +7,8 @@ module.exports = app => {
   // Retrieve all Entries
   app.get("/entries", entries.findAll);
 
+  app.get("entries/apps", entries.findAllApps);
+
   // Retrieve any Entries with entryId (search_id)
   app.get("/entries/:entryId", entries.findOneByID);
 
