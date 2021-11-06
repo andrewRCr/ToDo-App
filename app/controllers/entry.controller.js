@@ -40,6 +40,7 @@ exports.create = (req, res) => {
       else res.send(data);
     });
 
+    // NOTE: not sure why I had this here; leave commented out
    // res.send(req.body.message);
   };
 
