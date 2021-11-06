@@ -30,11 +30,10 @@ module.exports = {
  // mysql --host=us-cdbr-east-04.cleardb.com --user=ba1ff23f712881 --password=6b703281 --reconnect heroku_c117fdf5a23974d
 
 // base url:
-// https://mighty-beyond-55909.herokuapp.com/entries
+// https://cs361-project-creekmoa.herokuapp.com/entries
 
 // database entry format (JSON):
 // app, username, password (id (INT, auto-increment) and search_id (app_username) are both auto-generated and assigned)
-// GET an individual 
 //
 // e.g.,
 // {
