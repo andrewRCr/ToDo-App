@@ -4,7 +4,7 @@ require('dotenv').config();
 
 
 // Create and Save a new Entry
-// exports.create = (req, res) => {
+exports.create = (req, res) => {
     // Validate request
   //   if (!req.body) {
   //     res.status(400).send({
@@ -41,7 +41,7 @@ require('dotenv').config();
   //   });
 
   //   res.send(req.body.message);
-  // };
+  };
 
 // Retrieve all Entries from the database
 exports.findAll = (req, res) => {
