@@ -182,7 +182,8 @@ function pushDatedTodo(id) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "http://localhost:5000/task-calendar", true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.setRequestHeader("Access-Control-Allow-Origin","http://localhost:5000");
+    xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); 
+    xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
 
     // Tell our AJAX request how to resolve
     xhttp.onreadystatechange = () => {
