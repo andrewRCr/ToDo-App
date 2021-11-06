@@ -184,6 +184,7 @@ function pushDatedTodo(id) {
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); 
     xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+    xhttp.setRequestHeader('Access-Control-Allow-Methods', 'POST');
 
     // Tell our AJAX request how to resolve
     xhttp.onreadystatechange = () => {
