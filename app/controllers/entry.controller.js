@@ -67,6 +67,29 @@ exports.findAll = (req, res) => {
     });
   };
 
+  // Retrieve all Entries (APP NAME ONLY) from the database
+exports.findAllApps = (req, res) => {
+  // authenticate
+  if (req.body.keyword != process.env.magicword) {
+    res.status(400).send({
+      message: "Keyword doesn't match!"
+    });
+    return;
+  }
+
+    Entry.getAllApps((err, data) => {
+      if (err) {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving entries."
+        });
+        return;
+      }
+
+      else res.send(data);
+    });
+  };
+
 
 
 // Find a single Entry with an entryId
