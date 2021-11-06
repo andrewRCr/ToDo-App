@@ -165,7 +165,6 @@ function pushDatedTodo(id) {
   var task_description;
   var due_date;
 
-
   todos.forEach(function(item) {
     // use == not ===, because here types are different. One is number and other is string
     if (item.id == id) {
@@ -179,31 +178,25 @@ function pushDatedTodo(id) {
       due_date: due_date
     };
 
-        // Setup our AJAX request
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "http://localhost:5000/task-calendar", true);
-        xhttp.setRequestHeader("Content-type", "application/json");
-    
-        // // Tell our AJAX request how to resolve
-        // xhttp.onreadystatechange = () => {
-        //     if (xhttp.readyState == 4 && xhttp.status == 200) {
-    
-        //         // Clear the input fields for another transaction
-        //         inputEmpID.value = '';
-        //         inputFirstName.value = '';
-        //         inputLastName.value = '';
-        //         inputPhoneNumber.value = '';
-        //         inputJobTitle.value = '';
-        //         inputAssignedYard.value = '';
-        //         window.location.href = "/employees";
-        //     }
-        //     else if (xhttp.readyState == 4 && xhttp.status != 200) {
-        //         console.log("There was an error with the input.");
-        //     }
-        // }
-    
-        // Send the request and wait for the response
-        xhttp.send(JSON.stringify(data));
+    // setup AJAX request
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "http://localhost:5000/task-calendar", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.setRequestHeader("Access-Control-Allow-Origin","http://localhost:5000");
+
+    // Tell our AJAX request how to resolve
+    xhttp.onreadystatechange = () => {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+
+        console.log("Success!")
+        }
+        else if (xhttp.readyState == 4 && xhttp.status != 200) {
+            console.log("There was an error with the input.");
+        }
+    }
+
+    // send the request and wait for the response
+    xhttp.send(JSON.stringify(data));
 
   };
 

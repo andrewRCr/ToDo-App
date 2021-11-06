@@ -15,6 +15,12 @@ app.engine('.hbs', exphbs({                     // Create an instance of the han
 // handle JSON and form data
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+// enable CORS without external module
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 // use Heroku-defined port
 const port = process.env.PORT || 3000;
