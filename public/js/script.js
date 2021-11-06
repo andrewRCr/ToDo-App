@@ -151,11 +151,64 @@ function editTodo(id) {
       todoInput.value = item.name;
       dateInput.value = item.date;
     }
+
+
   });
 
   // delete the previous version of the task
   deleteTodo(id);
 }
+
+// function to PUSH todo to calendar API
+function pushDatedTodo(id) {
+
+  var task_description;
+  var due_date;
+
+
+  todos.forEach(function(item) {
+    // use == not ===, because here types are different. One is number and other is string
+    if (item.id == id) {
+      task_description = item.name;
+      due_date = item.date;
+    }
+    })
+
+    let data = {
+      task_description: task_description,
+      due_date: due_date
+    };
+
+        // Setup our AJAX request
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "http://localhost:5000/task-calendar", true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+    
+        // // Tell our AJAX request how to resolve
+        // xhttp.onreadystatechange = () => {
+        //     if (xhttp.readyState == 4 && xhttp.status == 200) {
+    
+        //         // Clear the input fields for another transaction
+        //         inputEmpID.value = '';
+        //         inputFirstName.value = '';
+        //         inputLastName.value = '';
+        //         inputPhoneNumber.value = '';
+        //         inputJobTitle.value = '';
+        //         inputAssignedYard.value = '';
+        //         window.location.href = "/employees";
+        //     }
+        //     else if (xhttp.readyState == 4 && xhttp.status != 200) {
+        //         console.log("There was an error with the input.");
+        //     }
+        // }
+    
+        // Send the request and wait for the response
+        xhttp.send(JSON.stringify(data));
+
+  };
+
+ 
+
 
 // initially get everything from localStorage
 getFromLocalStorage();
@@ -181,9 +234,9 @@ todoItemsList.addEventListener('click', function(event) {
     }
 
     // // check if that is a date-button push 
-    // if (event.target.classList.contains('date-button')) {
-    //   // get id from data-key attribute's value of parent <li> where the delete-button is present
-    //   pushDatedTodo(event.target.parentElement.getAttribute('data-key'));
-    // }
+    if (event.target.classList.contains('date-button')) {
+      // get id from data-key attribute's value of parent <li> where the delete-button is present
+      pushDatedTodo(event.target.parentElement.getAttribute('data-key'));
+    }
 });
 
