@@ -40,7 +40,7 @@ exports.create = (req, res) => {
       else res.send(data);
     });
 
-    res.send(req.body.message);
+   // res.send(req.body.message);
   };
 
 // Retrieve all Entries from the database
