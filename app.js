@@ -5,6 +5,7 @@
 // SETUP AND ROUTING
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require("body-parser");
 const app = express();
 var exphbs = require('express-handlebars');     // Import express-handlebars
@@ -15,6 +16,7 @@ app.engine('.hbs', exphbs({                     // Create an instance of the han
 // handle JSON and form data
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+app.use(cors());
 // enable CORS without external module
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
