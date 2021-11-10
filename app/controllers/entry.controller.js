@@ -114,7 +114,7 @@ exports.findOneByID = (req, res) => {
           });
           return;
         }
-      } else res.send(data);
+      } else res.send(data[0]);
     });
   };
 
