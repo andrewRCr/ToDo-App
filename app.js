@@ -8,8 +8,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require("body-parser");
 const app = express();
-var exphbs = require('express-handlebars');     // Import express-handlebars
-app.engine('.hbs', exphbs({                     // Create an instance of the handlebars engine to process templates
+var exphbs = require('express-handlebars');     // import express-handlebars
+app.engine('.hbs', exphbs({                     // create instance of handlebars engine
     extname: ".hbs"
 }));
 
@@ -34,6 +34,7 @@ app.set('view engine', '.hbs');
 // define default route
 app.get('/', (req, res) => res.render('index'))
 
+// define all other routes
 require("./app/routes/entry.routes.js")(app);
 
 

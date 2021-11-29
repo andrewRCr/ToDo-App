@@ -1,24 +1,24 @@
 module.exports = app => {
     const entries = require("../controllers/entry.controller.js");
 
-  // Create a new Entry
+  // create a new entry
   app.post("/new-entry", entries.create);
 
-  // Retrieve all Entries
+  // retrieve all entries
   app.post("/entries", entries.findAll);
 
-  // Retrieve all Entries - "App" field only
+  // retrieve all entries - "App" field only
   app.post("/entries-apps", entries.findAllApps);
 
-  // Retrieve any Entries with entryId (search_id)
+  // retrieve any entries with entryId (search_id)
   app.post("/entries/:entryId", entries.findOneByID);
 
-  // Update an Entry with entryId
+  // update an entry with entryId
   app.put("/entries/:entryId", entries.update);
 
-  // Delete an Entry with entryId
+  // delete an entry with entryId
   app.delete("/entries/:entryId", entries.delete);
 
-  // Delete all Entries
+  // delete all Entries
   app.delete("/entries", entries.deleteAll);
 };

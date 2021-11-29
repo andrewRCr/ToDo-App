@@ -3,9 +3,9 @@ require('dotenv').config();
 
 
 
-// Create and Save a new Entry
+// create and save a new entry
 exports.create = (req, res) => {
-    // Validate request
+    // validate request
     if (!req.body) {
       res.status(400).send({
         message: "Content can not be empty!"
@@ -21,7 +21,7 @@ exports.create = (req, res) => {
     }
     
 
-    // Create an Entry
+    // create an entry
     const entry = new Entry({
       app: req.body.app,
       username: req.body.username,
@@ -29,7 +29,7 @@ exports.create = (req, res) => {
     });
 
   
-    // Save Entry in the database
+    // save entry in the database
     Entry.create(entry, (err, data) => {
       if (err) {
         res.status(500).send({
@@ -39,12 +39,9 @@ exports.create = (req, res) => {
       }
       else res.send(data);
     });
-
-    // NOTE: not sure why I had this here; leave commented out
-   // res.send(req.body.message);
   };
 
-// Retrieve all Entries from the database
+// retrieve all entries from the database
 exports.findAll = (req, res) => {
   // authenticate
   if (req.body.keyword != process.env.magicword) {
@@ -67,7 +64,7 @@ exports.findAll = (req, res) => {
     });
   };
 
-  // Retrieve all Entries (APP NAME ONLY) from the database
+  // retrieve all entries (APP NAME ONLY) from the database
 exports.findAllApps = (req, res) => {
   // authenticate
   if (req.body.keyword != process.env.magicword) {
@@ -91,8 +88,7 @@ exports.findAllApps = (req, res) => {
   };
 
 
-
-// Find a single Entry with an entryId
+// find a single entry with an entryId
 exports.findOneByID = (req, res) => {
   // authenticate
   if (req.body.keyword != process.env.magicword) {
@@ -119,8 +115,7 @@ exports.findOneByID = (req, res) => {
   };
 
 
-
-// Update an Entry identified by the entryId in the request
+// update an entry identified by the entryId in the request
 exports.update = (req, res) => {
     // Validate Request
     if (!req.body) {
@@ -156,7 +151,7 @@ exports.update = (req, res) => {
     );
   };
 
-// Delete an Entry with the specified entryId in the request
+// delete an entry with the specified entryId in the request
 exports.delete = (req, res) => {
 
   // authenticate
@@ -182,7 +177,7 @@ exports.delete = (req, res) => {
     });
   };
 
-// Delete all Entries from the database.
+// delete all Entries from the database
 exports.deleteAll = (req, res) => {
 
   // authenticate

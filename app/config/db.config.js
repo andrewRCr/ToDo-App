@@ -1,9 +1,4 @@
-// module.exports = {
-//     HOST: "us-cdbr-east-04.cleardb.com",
-//     USER: "ba1ff23f712881",
-//     PASSWORD: "6b703281",
-//     DB: "heroku_c117fdf5a23974d"
-//   };
+// ./app/config/db.config.js
 
 module.exports = {
   HOST: "rnr56s6e2uk326pj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
@@ -25,28 +20,3 @@ module.exports = {
 
 
 
-// CLEARDB
-// DATABASE LOGIN:
- // mysql --host=us-cdbr-east-04.cleardb.com --user=ba1ff23f712881 --password=6b703281 --reconnect heroku_c117fdf5a23974d
-
-// base url:
-// https://cs361-project-creekmoa.herokuapp.com/entries
-
-// database entry format (JSON):
-// app, username, password (id (INT, auto-increment) and search_id (app_username) are both auto-generated and assigned)
-//
-// e.g.,
-// {
-//  "app": "SomeApp",
-//  "username": "SomeUsername",
-//  "password": "SomePassword"
-// }
-
-// rest API methods available:
-// method    url                        action
-// GET	    /entries	                   get all Entries
-// GET	    /entries/DeusEx_jcdenton	   get any Entry with app: DeusEx and username: jcdenton
-// POST	    /entries	                   add new Entry
-// PUT	    /entries/2	                 update Entry with id=2
-// DELETE	  /entries/2	                 remove Entry with id=2
-// DELETE	  /entries	                   remove all Entries

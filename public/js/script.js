@@ -12,17 +12,17 @@ const dateInput = document.querySelector('.date-input');
 // select the <ul> with class="todo-items"
 const todoItemsList = document.querySelector('.todo-items');
 
-// array which stores every todos
+// array for storing todo items
 let todos = [];
 
-// add an eventListener on form, and listen for submit event
+// add an eventListener on form + listen for submit event
 todoForm.addEventListener('submit', function(event) {
-  // prevent the page from reloading when submitting the form
+  // prevent the page from automatically reloading on form submission
   event.preventDefault();
   addTodo(todoInput.value, dateInput.value); // call addTodo function with the input box current values
 });
 
-// function to add todo
+// function to add a new todo item
 function addTodo(item, dueDate) {
   // if item is not empty
   if (item !== '') {
@@ -34,7 +34,7 @@ function addTodo(item, dueDate) {
       completed: false
     };
 
-    // then add it to todos array
+    // then add it to the todos array
     todos.push(todo);
     addToLocalStorage(todos);
 
@@ -55,19 +55,14 @@ function renderTodos(todos) {
     const checked = item.completed ? 'checked': null;
 
     // make a <li> element and fill it
-    // <li> </li>
+    // i.e., <li> </li>
     const li = document.createElement('li');
-    // <li class="item"> </li>
+    // i.e., <li class="item"> </li>
     li.setAttribute('class', 'item');
-    // <li class="item" data-key="20200708"> </li>
+    // i.e., <li class="item" data-key="20200708"> </li>
     li.setAttribute('data-key', item.id);
-    /* <li class="item" data-key="20200708"> 
-          <input type="checkbox" class="checkbox">
-          Go to Gym
-          <button class="delete-button">X</button>
-        </li> */
 
-    // if item is completed, then add a class to <li> called 'checked', which will add line-through style
+    // if item is completed, then add a class to <li> called 'checked', which will (via css) add line-through style
     if (item.completed === true) {
       li.classList.add('checked');
     }
@@ -107,7 +102,7 @@ function addToLocalStorage(todos) {
   renderTodos(todos);
 }
 
-// function helps to get everything from local storage
+// function to get everything from local storage
 function getFromLocalStorage() {
   const reference = localStorage.getItem('todos');
   // if reference exists
@@ -121,7 +116,6 @@ function getFromLocalStorage() {
 // toggle the value to completed and not completed
 function toggle(id) {
   todos.forEach(function(item) {
-    // use == not ===, because here types are different. One is number and other is string
     if (item.id == id) {
       // toggle the value
       item.completed = !item.completed;
@@ -135,7 +129,6 @@ function toggle(id) {
 function deleteTodo(id) {
   // filters out the <li> with the id and updates the todos array
   todos = todos.filter(function(item) {
-    // use != not !==, because here types are different. One is number and other is string
     return item.id != id;
   });
 
@@ -146,13 +139,10 @@ function deleteTodo(id) {
 // function to EDIT todo
 function editTodo(id) {
   todos.forEach(function(item) {
-    // use == not ===, because here types are different. One is number and other is string
     if (item.id == id) {
       todoInput.value = item.name;
       dateInput.value = item.date;
     }
-
-
   });
 
   // delete the previous version of the task
@@ -166,7 +156,6 @@ function pushDatedTodo(id) {
   var due_date;
 
   todos.forEach(function(item) {
-    // use == not ===, because here types are different. One is number and other is string
     if (item.id == id) {
       task_description = item.name;
       due_date = item.date;
@@ -184,10 +173,9 @@ function pushDatedTodo(id) {
     xhttp.setRequestHeader("Content-type", "application/json");
 
 
-    // Tell our AJAX request how to resolve
+    // tell AJAX request how to resolve
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
-
         console.log("Success!")
         }
         else if (xhttp.readyState == 4 && xhttp.status != 200) {
@@ -202,11 +190,11 @@ function pushDatedTodo(id) {
 
  
 
-
+// PAGE-LOAD INITIALIZATION
 // initially get everything from localStorage
 getFromLocalStorage();
 
-// after that addEventListener <ul> with class=todoItems. Because we need to listen for click event in all delete-button and checkbox
+// after that addEventListener <ul> with class=todoItems, to listen for click event in all delete-button, date-button, edit button, and checkbox
 todoItemsList.addEventListener('click', function(event) {
   // check if the event is on checkbox
   if (event.target.type === 'checkbox') {
@@ -220,7 +208,7 @@ todoItemsList.addEventListener('click', function(event) {
     deleteTodo(event.target.parentElement.getAttribute('data-key'));
   }
 
-    // check if that is a regular item click, for editing
+    // check if that is an edit-button
     if (event.target.classList.contains('edit-button')) {
       // get id from data-key attribute's value of parent <li> where the item is present
       editTodo(event.target.parentElement.getAttribute('data-key'));
@@ -228,7 +216,7 @@ todoItemsList.addEventListener('click', function(event) {
 
     // // check if that is a date-button push 
     if (event.target.classList.contains('date-button')) {
-      // get id from data-key attribute's value of parent <li> where the delete-button is present
+      // get id from data-key attribute's value of parent <li> where the date-button is present
       pushDatedTodo(event.target.parentElement.getAttribute('data-key'));
     }
 });

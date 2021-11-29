@@ -53,6 +53,7 @@ Entry.getAll = result => {
   });
 };
 
+
 Entry.getAllApps = result => {
   sql.query("SELECT app FROM entries", (err, res) => {
     if (err) {
@@ -65,7 +66,6 @@ Entry.getAllApps = result => {
     result(null, res);
   });
 };
-
 
 
 Entry.updateById = (id, entry, result) => {
@@ -91,6 +91,7 @@ Entry.updateById = (id, entry, result) => {
   );
 };
 
+
 Entry.remove = (id, result) => {
   sql.query("DELETE FROM entries WHERE id = ?", id, (err, res) => {
     if (err) {
@@ -109,6 +110,7 @@ Entry.remove = (id, result) => {
     result(null, res);
   });
 };
+
 
 Entry.removeAll = result => {
   sql.query("DELETE FROM entries", (err, res) => {
